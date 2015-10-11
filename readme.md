@@ -6,7 +6,7 @@
 
 ## 直感的に色を操作できるライブラリです
 
-iro.Color.jsを使えば自然で直感的な記述で色を扱うことができます。
+iro.Color.jsを使えば直感的な記述で色を扱うことができます。
 
 たとえば次のようにHSLとして初期化した色でも、そのままRGBやCMYKの色情報を取得・設定して、RGBの書式で出力したりといったことが可能です。
 
@@ -18,7 +18,7 @@ color.k -= 10.0; // 黒を10落とす
 document.getElementById('elem').style.color = color.css('rgb');
 ```
 
-* RGB, CMYK, HSL, HSV(HSB) の4種類のカラーモデルに対応しています ⇒ [a, r, g, b, h, s, v, l, c, m, y, k プロパティ](api.md#a-r-g-b-h-s-v-l-c-m-y-k-プロパティ)
+* RGB, CMYK, HSL, HSVの4種類のカラーモデルに対応しています ⇒ [a, r, g, b, h, s, v, l, c, m, y, k プロパティ](api.md#a-r-g-b-h-s-v-l-c-m-y-k-プロパティ)
 * #FFFFFFなどのhex形式はもちろんrgb, hslなどの文字列形式からのインスタンス化、また再び文字列に戻すことが可能です ⇒ [コンストラクタ](api.md#コンストラクタ), [css メソッド](api.md#css-メソッド)
 * ペイントソフトなどで用いられている色の合成（スクリーン、覆い焼き、オーバーレイなど）も可能です ⇒ [blend メソッド](api.md#blend-メソッド)
 
