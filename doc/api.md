@@ -1,5 +1,3 @@
-[日本語のドキュメントはこちらをご参照ください(For Japanese)](api.ja.md)
-
 # iro.Color.js API
 
 # Contens
