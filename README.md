@@ -2,7 +2,7 @@
 
 ```javascript
 new iro.Color('hsla(228,80,32,1.0)')
-  .o('r', 60).o('h',20).o('k', -10).css('hex');
+  .o('r',60).o('h',20).o('k',-10).css('hex');
 ```
 
 The above example does:
