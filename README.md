@@ -1,5 +1,8 @@
 # iro
 
+[![NPM](https://img.shields.io/badge/npm-iro-orange.svg)](https://www.npmjs.com/package/iro)
+![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+
 ```javascript
 new iro.Color('hsla(228,80,32,1.0)')
   .o('r',60).o('h',20).o('k',-10).css('hex');
@@ -15,7 +18,7 @@ The above example does:
 
 API documentation: [English](doc/api.md)/[Japanese](doc/api-ja.md)
 
-# For Node.js (npm)
+## For Node.js (npm)
 
 Install via npm.
 
@@ -28,7 +31,7 @@ const iro = require('iro');
 var c = new iro.Color("...");
 ```
 
-# For Webpages 
+## For Webpages 
 
 Download `iro.js` OR `iro.min.js`, and add script tag into your HTML.
 
@@ -36,7 +39,7 @@ Download `iro.js` OR `iro.min.js`, and add script tag into your HTML.
 <script type="text/javascript" src="iro.min.js"></script>
 ```
 
-# The MIT License (MIT)
+## The MIT License (MIT)
 
 This package is provided under the MIT License.
 

@@ -1,9 +1,12 @@
-# iro.Color.js API
+# iro API
+
+[![NPM](https://img.shields.io/badge/npm-iro-orange.svg)](https://www.npmjs.com/package/iro)
 
 # Contens
-* [iro.Color.js API](#irocolorjs-api)
-* [Constructor](#constructor)
-* [Methods](#methods)
+
+- [iro API](#iro-api)
+- [Constructor](#constructor)
+- [Methods](#methods)
 	* [css Method](#css-method)
 		* [Without argument or Specify CSS formats (Serialization)](#without-argument-or-specify-css-formats-serialization)
 		* [Specify CSS string or Color names (Deserialization)](#specify-css-string-or-color-names-deserialization)
@@ -14,16 +17,16 @@
 	* [equals Methods](#equals-methods)
 	* [offset Method](#offset-method)
 	* [clone Method](#clone-method)
-* [Properties](#properties)
+- [Properties](#properties)
 	* [a, r, g, b, h, s, v, l, c, m, y, k Properties](#a-r-g-b-h-s-v-l-c-m-y-k-properties)
 	* [useHsv Property](#usehsv-property)
 	* [model Property](#model-property)
-* [Static Methods](#static-methods)
+- [Static Methods](#static-methods)
 	* [name Method](#name-method)
 		* [Specified 2 arguments](#specified-2-arguments)
 		* [Specify 1 argument](#specify-1-argument)
 		* [No arguments](#no-arguments)
-* [TIPS](#tips)
+- [TIPS](#tips)
 	* [For shorthand, dispense iro](#for-shorthand-dispense-iro)
 
 # Constructor
@@ -63,11 +66,11 @@ new iro.Color('hsl(0,0,0)').css(); // hsla(0,0,0,1.0)
 
 Or you can specify CSS formats:
 
-* `iro.Color.formats.rgba` or `'rgba'`
-* `iro.Color.formats.rgb` or `'rgb'`
-* `iro.Color.formats.hsla` or `'hsla'`
-* `iro.Color.formats.hsl` or `'hsl'`
-* `iro.Color.formats.hex` or `'hex'`
+- `iro.Color.formats.rgba` or `'rgba'`
+- `iro.Color.formats.rgb` or `'rgb'`
+- `iro.Color.formats.hsla` or `'hsla'`
+- `iro.Color.formats.hsl` or `'hsl'`
+- `iro.Color.formats.hex` or `'hex'`
 
 For example, use 'hex' to serialize into HEX CSS string.
 
@@ -76,13 +79,16 @@ new Color('rgb(255,255,255)').css('hex'); // #ffffff
 ```
 
 **Note:**
-* When you choose RGB, HSL, or HEX formats, alpha value of `a` property will be lost.
-* Floating number will be round, therefore this serialization is IRREVERSIBLE. `color.css(color.css())` will be change its value.
+
+- When you choose RGB, HSL, or HEX formats, alpha value of `a` property will be lost.
+- Floating number will be round, therefore this serialization is IRREVERSIBLE. `color.css(color.css())` will be change its value.
 
 
 ### Specify CSS string or Color names (Deserialization)
 
-By first argument, you can specify CSS formats (rgb, hsl, rgba, hsla or hex), CSS defined color names, or custom color names defined by [name property](#name-property).
+By first argument, you can specify CSS formats (rgb, hsl, rgba, hsla or hex),
+CSS defined color names, or custom color names defined by [name
+method](#name-method).
 
 ```javascript
 var color1 = new iro.Color();
@@ -125,7 +131,9 @@ console.log(new iro.Color().toString('rgb'));
 console.log(new iro.Color().css('rgb'));
 ```
 
-toString method only accepts CSS formats(rgb, rgba, hsl, hla, or hex) in contrast with css method. When you specify irregular value for first argument of toString, exception will be thrown.
+toString method only accepts CSS formats(rgb, rgba, hsl, hla, or hex) in
+contrast with css method. When you specify irregular value for first argument of
+toString, exception will be thrown.
 
 ```javascript
 new iro.Color().css('red') // okay!
@@ -136,14 +144,17 @@ Please see [css Method](#css-method) to learn more.
 
 ## rgb, hsv, hsl, cmyk Methods
 
-This methods sets value by multiple-arguments or single-array, or returns value as single-array as follow:
+These methods behave as accessor of RGB/HSV/HSL/CMYK values. 
+
+- To set values, specify multiple arguments or single-array argument.
+- To get values, specify no argument. (Returns as single array)
 
 ```javascript
 new iro.Color().rgb(255, 255, 255);
 new iro.Color().rgb(255, 255, 255, 1.0);
 new iro.Color().rgb([255, 255, 255]);
 new iro.Color().rgb([255, 255, 255, 1.0]);
-new iro.Color().rgb(); //returns 0, 0, 0, 1.0
+new iro.Color().rgb(); // returns [0, 0, 0, 1.0]
 ```
 
 When you omit `a` value, current instance value will be inherited.
@@ -153,9 +164,9 @@ The above example is `rgb`, but the other methods are the same.
 
 Note: `hsv` and `hsl` method will change `useHsv` property as follow:
 
-* When you set value by hsv method if useHsv is false, useHsv becomes true.
-* When you set value by hsl method if useHsv is true, useHsv becomes false.
-* In other cases, useHsv never be changed.
+- When you set value by hsv method if useHsv is false, useHsv becomes true.
+- When you set value by hsl method if useHsv is true, useHsv becomes false.
+- In other cases, useHsv never be changed.
 
 ## blend Method
 
@@ -178,22 +189,22 @@ When you want to prevent change color, call `clone` before `blend`:
 var color3 = color1.clone().blend(color2, 'screen');
 ```
 
-All blend methods are as follows:
+**Built-in blend methods:**
 
-* `iro.Color.blends.normal` or `'normal'`
-* `iro.Color.blends.multiply` or `'multiply'`
-* `iro.Color.blends.divide` or `'divide'`
-* `iro.Color.blends.screen` or `'screen'`
-* `iro.Color.blends.overlay` or `'overlay'`
-* `iro.Color.blends.dodge` or `'dodge'`
-* `iro.Color.blends.burn` or `'burn'`
-* `iro.Color.blends.hardlight` or `'hardlight'`
-* `iro.Color.blends.softlight` or `'softlight'`
-* `iro.Color.blends.difference` or `'difference'`
-* `iro.Color.blends.add` or `'add'`
-* `iro.Color.blends.subtract` or `'subtract'`
-* `iro.Color.blends.darken` or `'darken'`
-* `iro.Color.blends.lighten` or `'lighten'`
+- `iro.Color.blends.normal` or `'normal'`
+- `iro.Color.blends.multiply` or `'multiply'`
+- `iro.Color.blends.divide` or `'divide'`
+- `iro.Color.blends.screen` or `'screen'`
+- `iro.Color.blends.overlay` or `'overlay'`
+- `iro.Color.blends.dodge` or `'dodge'`
+- `iro.Color.blends.burn` or `'burn'`
+- `iro.Color.blends.hardlight` or `'hardlight'`
+- `iro.Color.blends.softlight` or `'softlight'`
+- `iro.Color.blends.difference` or `'difference'`
+- `iro.Color.blends.add` or `'add'`
+- `iro.Color.blends.subtract` or `'subtract'`
+- `iro.Color.blends.darken` or `'darken'`
+- `iro.Color.blends.lighten` or `'lighten'`
 
 ## equals Methods
 
@@ -203,7 +214,8 @@ This method allows a tolerance: `1e-12`
 
 If you change this tolerance, specify by second argument or change `iro.Color.epsilon`
 
-Note: equals method only check approximation, therefore this method never guarantee that the two colors are a same CSS string value.
+Note: equals method only check approximation, therefore this method never
+guarantee that the two colors are a same CSS string value. 
 Use [css method](#css-method) to check this as follows:
 
 ```javascript
@@ -213,7 +225,7 @@ color1.css('cmyk') == color2.css('cmyk');
 
 ## offset Method
 
-This method offsets specified property by specified difference.
+This method increases or decreases value of specified property.
 
 ```javascript
 color.offset('h', 5);
@@ -230,7 +242,7 @@ offset method returns Color instance, therefore you can write as jQuery shorthan
 color.offset('r', 5).offset('g', 5).css();
 ```
 
-offset method can be written by `o` for shorthand.
+Also, offset method can be written by `o` for shorthand.
 
 ```javascript
 color.o('r', 5).o('g', 5).css();
@@ -250,12 +262,12 @@ var color2 = color1.clone();
 
 These properties represent ALPHA value and values of RGB, HSV, HSL and CMYK.
 
-* Range of `a` is 0-1
-* Range of `r`, `g`, and `b` are 0-255
-* Range of `c`, `m`, `y`, and `k` are 0-100
-* Range of `s`, `v`, and `l` are 0-100
-* Range of `h` is 0-360
-* These properties may be floating value.
+- Range of `a` is 0-1
+- Range of `r`, `g`, and `b` are 0-255
+- Range of `c`, `m`, `y`, and `k` are 0-100
+- Range of `s`, `v`, and `l` are 0-100
+- Range of `h` is 0-360
+- These properties may be floating value.
 
 The all properties has built-in limiter, when you set out-of-range value, it rounds its value.
 
@@ -276,8 +288,10 @@ You must change useHsv property to use HSV value. See [useHsv property](#usehsv-
 HSL and HSV conflits its `h` and `s`, therefore `h` and `s` represent values of HSL.
 You must change useHsv property to use HSV value.
 
-* When useHsv property is false, `h`, `s` and `l` represent values of HSL. `v` property cannot be access and throws exception when use it. This is default.
-* When useHsv property is true, `h`, `s` and `v` represent values of HSV. `l` property cannnot be access and throws exception when use it.
+- When useHsv property is false, `h`, `s` and `l` represent values of HSL. `v`
+  property cannot be access and throws exception when use it. This is default.
+- When useHsv property is true, `h`, `s` and `v` represent values of HSV. `l`
+  property cannnot be access and throws exception when use it.
 
 When you want to change useHsv property, set useHsv directly:
 
@@ -286,7 +300,8 @@ var color = new iro.Color();
 color.useHsv = true;
 ```
 
-Or, use [hsv method](#rgb-hsv-hsl-cmyk-methods) that can change useHsv property automatically.
+Or, use [hsv method](#rgb-hsv-hsl-cmyk-methods) that can change useHsv property
+automatically.
 
 ```javascript
 var color = new iro.Color().hsv(0, 0, 0)
@@ -329,32 +344,39 @@ var ctrlColor1 = new iro.Color('controlColor1');
 var ctrlColor2 = new iro.Color().css('controlColor1');
 ```
 
-* Color names are case insensitive. `COLor` and `coloR` is the same name.
-* Cannnot use `hex`, `rgb`, `rgba`, `hsl`, `hsla` for name of color. (throws exception when use)
-* This method never check value is correct. When you set irregular value, constructor or css method will throws error rather than this method.
-* Constructor and css method try to reference specified name until resolved, therefore loop-reference causes stackoverflow. (In the following example, `black` refers `white`, and `white` refers `black`)
+- Color names are case insensitive. `COLor` and `coloR` is the same name.
+- Cannnot use `hex`, `rgb`, `rgba`, `hsl`, `hsla` for name of color. (throws
+  exception when use)
+- This method never check value is correct. When you set irregular value,
+  constructor or css method will throws error rather than this method.
+- Constructor and css method try to reference specified name until resolved,
+  therefore loop-reference causes stackoverflow. (In the following example,
+  `black` refers `white`, and `white` refers `black`)
 
-  ```javascript
-  iro.Color.name('black', 'white');
-  iro.Color.name('white', 'black');
-  var black = new iro.Color('black'); // stackoverflow!!
-  ```
-* When you specified iro.Color instance for seconds argument of `name` method. In this case, constructor and css method use value of its instance when name-resolving,
+```javascript
+iro.Color.name('black', 'white');
+iro.Color.name('white', 'black');
+var black = new iro.Color('black'); // stackoverflow!!
+```
 
-  ```javascript
-  var color1 = new iro.Color('blue');
-  var color2 = new iro.Color('red';
+- When you specified iro.Color instance for seconds argument of `name` method.
+  In this case, constructor and css method use value of its instance when
+  name-resolving,
 
-  iro.Color.name('color1', color1);
-  color1.css('red');
-  color2.css('color1'); // color2 is red
-  ```
+```javascript
+var color1 = new iro.Color('blue');
+var color2 = new iro.Color('red';
 
+iro.Color.name('color1', color1);
+color1.css('red');
+color2.css('color1'); // color2 is red
+```
 
 ### Specify 1 argument
 
 Returns registred value (string or Color instance).
-This method never resolve its name in contrast with constructor and `css` method. returns value directly.
+This method never resolve its name in contrast with constructor and `css`
+method. Returns value directly.
 
 ```javascript
 console.log(iro.Color.name('black')); // #000000
@@ -382,6 +404,6 @@ iro.Color.name().forEach(function(name) {
 You can dispense `iro.` as follows:
 
 ```javascript
-var Color = iro.Color;
+const Color = iro.Color;
 console.log(new Color('rgb(23,23,23)').css(Color.formats.hex));
 ```

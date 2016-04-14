@@ -4,7 +4,7 @@
   "description": "Color class for javascript. Supports RGB, HSL, HSV, CMYK, and alpha channels",
   "main": "dist/iro",
   "scripts": {
-    "build": "gulp build"
+    "test": "gulp build"
   },
   "repository": {
     "type": "git",
