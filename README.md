@@ -1,7 +1,8 @@
 # iro
 
+[![Build Status](https://travis-ci.org/retorillo/iro.svg?branch=master)](https://travis-ci.org/retorillo/iro)
 [![NPM](https://img.shields.io/badge/npm-iro-orange.svg)](https://www.npmjs.com/package/iro)
-![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ```javascript
 new iro.Color('hsla(228,80,32,1.0)')
