@@ -1,7 +1,7 @@
 # iro
 
 [![Build Status](https://travis-ci.org/retorillo/iro.svg?branch=master)](https://travis-ci.org/retorillo/iro)
-[![NPM](https://img.shields.io/badge/npm-iro-orange.svg)](https://www.npmjs.com/package/iro)
+[![NPM](https://img.shields.io/npm/v/iro.svg)](https://www.npmjs.com/package/iro)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ```javascript
